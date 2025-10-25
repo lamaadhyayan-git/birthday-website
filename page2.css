@@ -17,7 +17,7 @@ body {
   position: relative;
   top: -370px;
   font-family:sans-serif;
-  left: -340px;
+  left: -130px;
 }
 
 /* Ensure the content is aligned to the top (flex-start) */
@@ -50,36 +50,66 @@ body {
 }
 
 .nav-buttons {
-  position: relative;
-  bottom: -60px;
-  left: -528px;
-  width: 6%;
+  position: absolute;
+  bottom: 60px;
+  left: 70%;
+  width: 7%;
   display: flex;
   justify-content: space-between;
   background: #ffb6c1;
   border: none;
-  padding: 10px 15px;
+  padding: 5px 25px;
   border-radius: 20px;
   font-family: inherit;
   color: #b30059;
   font-size: 1.1em;
   cursor: pointer;
   transition: background 0.3s;
-  z-index: 1;
+  z-index: 1000;
+  
 }
 
 .nav-buttons:hover {
   background: #ff8bb0;
 } 
 
+.nav-buttons a {
+  text-decoration: none;
+  background: #ff69b4;
+  color: white;
+  padding: 0px -10px;
+  border-radius: 10px;
+  font-size: 1.em;
+  font-family: 'Sacramento', cursive;
+} 
+
 .para{
   color: #ff4d94;
   margin-bottom: 1px;
   position: relative;
-  top: -100px;
+  top: -200px;
   font-family:sans-serif;
-  left: -340px;
+  left: -300px;
 }
+
+.para1{
+  color: #ff4d94;
+  margin-bottom: 1px;
+  position: relative;
+  top: -110px;
+  font-family:sans-serif;
+  left: -170px;
+}
+
+.para2{
+  color: #ff4d94;
+  margin-bottom: 1px;
+  position: relative;
+  top: -250px;
+  font-family:sans-serif;
+  left: -70px;
+}
+
 
 .hearts {
   position: absolute;
