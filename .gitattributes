@@ -1,1 +1,2 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
 images/InShot_20251026_015027174.mp4 filter=lfs diff=lfs merge=lfs -text
