@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Gift Box</title>
+    <link rel="stylesheet" href="box.css">
+</head>
+<body>
+    
+    <div id="gift-box" class="gift">
+        <a href="booth.html" class="gift-link" id="secret-link">
+            
+        </a>
+    </div>
+    <div class="paper" id="p2">
+      <div class="back">
+        <div class="content">
+          <h1>Please Open</h1> 💌</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+        document.getElementById('gift-box').addEventListener('click', function() {
+            // 1. Trigger the CSS 'open' animation
+            this.classList.add('open');
+            
+            // 2. Wait for the animation to finish (1.5 seconds) then redirect
+            // This provides a smooth transition where the box opens before the page changes.
+            setTimeout(function() {
+                document.getElementById('secret-link').click();
+            }, 1500); 
+        });
+    </script>
+
+    <div class="balloons">
+        <div class="balloon pink"></div>
+        <div class="balloon lightpink"></div>
+        <div class="balloon hotpink"></div>
+        <div class="balloon deeppink"></div>
+    </div>
+
+</body>
+</html>

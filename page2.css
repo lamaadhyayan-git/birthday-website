@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: 'Sacramento', cursive;
+  background: #ffe6f0 url("assets/paper-bg.jpg") no-repeat center/cover;
+  overflow: auto;
+  color: #b30059;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150vh;
+  left: 20%;
+}
+
+.check {
+  color: #ff4d94;
+  margin-bottom: 1px;
+  position: relative;
+  top: -370px;
+  font-family:sans-serif;
+  left: -340px;
+}
+
+/* Ensure the content is aligned to the top (flex-start) */
+.paper .back {
+    /* If your existing code uses display: flex, change alignment properties: */
+    justify-content: flex-start; /* Aligns content to the top */
+    align-items: flex-start;    /* Aligns content to the left */
+    
+    /* Ensure it takes up the full space of the paper */
+    height: 100%; 
+    width: 100%;
+}
+
+.content {
+    /* Ensure the text container starts at the top-left */
+    align-self: flex-start; 
+    
+    /* Add padding to prevent the text from hitting the very edge of the book */
+    padding-top: 30px; 
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.content p {
+    /* Force the paragraph to align left */
+    text-align: left; 
+    
+    /* Ensure the <p> takes up enough width */
+    width: 100%; 
+}
+
+.nav-buttons {
+  position: relative;
+  bottom: -60px;
+  left: -528px;
+  width: 6%;
+  display: flex;
+  justify-content: space-between;
+  background: #ffb6c1;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-family: inherit;
+  color: #b30059;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 1;
+}
+
+.nav-buttons:hover {
+  background: #ff8bb0;
+} 
+
+.para{
+  color: #ff4d94;
+  margin-bottom: 1px;
+  position: relative;
+  top: -100px;
+  font-family:sans-serif;
+  left: -340px;
+}
+
+.hearts {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart {
+  width: 25px;
+  height: 25px;
+  background-color: #ff4da6;
+  position: absolute;
+  bottom: -50px;
+  transform: rotate(45deg);
+  animation: floatUp 8s linear infinite;
+}
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #ff4da6;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -12px;
+  left: 0;
+}
+.heart::after {
+  left: -12px;
+  top: 0;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 6s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(45deg) scale(0.8); opacity: 0; }
+}
+
+/* floating balloons */
+.balloons {
+  position: absolute;
+  bottom: -150px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.balloon {
+  width: 60px;
+  height: 80px;
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  bottom: 0;
+  animation: rise 10s ease-in infinite;
+  box-shadow: inset -4px -6px 10px rgba(0,0,0,0.2);
+}
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: #ffb6c1;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.balloon.pink { background: #ff99cc; left: 15%; animation-delay: 0s; }
+.balloon.lightpink { background: #ffb6c1; left: 40%; animation-delay: 2s; }
+.balloon.hotpink { background: #ff66b2; left: 65%; animation-delay: 4s; }
+.balloon.deeppink { background: #ff1a75; left: 85%; animation-delay: 6s; }
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}

@@ -1,0 +1,201 @@
+/* --- Setup --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* --- Gift Box Container --- */
+.gift {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+    background-color: #a55a88; /* Box body color */
+    border-radius: 10px;
+    transition: transform 0.5s ease-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* The actual link inside the box */
+.gift-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-family: sans-serif;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s 1s; /* Delay fade-in until box opens */
+    z-index: 10;
+}
+
+/* --- Gift Box Lid (The top part) --- */
+/* This element creates the main lid structure */
+.gift::before {
+    content: '';
+    position: absolute;
+    top: -20px; /* Position above the box */
+    left: 0;
+    width: 100%;
+    height: 20px; /* Lid height */
+    background-color: #d178aa; /* Lid color */
+    border-radius: 10px 10px 0 0;
+    transition: transform 1s ease-out;
+    transform-origin: bottom center; /* Pivot point for lifting */
+}
+
+/* --- Gift Box Bow (Vertical ribbon) --- */
+/* This element creates the vertical ribbon on the box body */
+.gift::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px; /* Bow thickness */
+    height: 100%;
+    background-color: #ffcc00; /* Bow color */
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+    z-index: 5; /* Place ribbon above box but below lifted lid */
+}
+
+/* --- Bow (Horizontal ribbon) - using a pseudo-element on the lid --- */
+/* This element creates the horizontal ribbon on the lid */
+.gift::before::after {
+    /* Note: Using a double pseudo-element is complex and not widely supported. 
+       A simpler approach is to create a second div in the HTML or use 
+       a radial-gradient on the lid, but this code keeps the simple pseudo-element structure: */
+    content: '';
+    position: absolute;
+    top: 5px; /* Position down from the lid top */
+    left: 0;
+    height: 10px;
+    width: 100%;
+    background-color: #ffcc00; /* Bow color */
+}
+
+/* ------------------------------------- */
+/* --- CLICKED (OPEN) STATE ANIMATION --- */
+/* ------------------------------------- */
+
+.gift.open::before {
+    /* Lifts the lid, rotates it back, and moves it up */
+    transform: translateY(-150px) rotateX(45deg) scale(0.8);
+}
+
+.gift.open::after {
+    /* Hides the vertical ribbon */
+    opacity: 0;
+}
+
+.gift.open .gift-link {
+    /* Reveals the link text */
+    opacity: 1;
+}
+
+.balloons {
+  position: absolute;
+  bottom: -150px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.balloon {
+  width: 60px;
+  height: 80px;
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  bottom: 0;
+  animation: rise 10s ease-in infinite;
+  box-shadow: inset -4px -6px 10px rgba(0,0,0,0.2);
+}
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: #ffb6c1;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.balloon.pink { background: #ff99cc; left: 15%; animation-delay: 0s; }
+.balloon.lightpink { background: #ffb6c1; left: 40%; animation-delay: 2s; }
+.balloon.hotpink { background: #ff66b2; left: 65%; animation-delay: 4s; }
+.balloon.deeppink { background: #ff1a75; left: 85%; animation-delay: 6s; }
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
+
+.journal {
+  width: 90%;
+  max-width: 700px;
+  height: 10vh;
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+  border-radius: 20px;
+  position: relative;
+  overflow: auto;
+  padding: 30px;
+  bottom: 80%;
+  text-align: center;
+}
+
+.page {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  padding: 50px 30px;
+  box-sizing: border-box;
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+h1{
+  color: #ff4d94;
+  margin-bottom: 20px;
+  bottom: 90%;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.image, .video {
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  left: 100%;
+  width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
